@@ -19,7 +19,8 @@ export class ContactPage {
 	cameras() {
 		//this.consultaPlacaSinespHTTP(placa) ;
 		//this.consultarPlacaCC(placa) ;
-		this.global.saida = 'FOI';	
+		//this.global.saida = 'FOI';
+		this.base64Image = '../assets/imgs/onix.png';	
 	}
 
 	takePicture(){
@@ -35,15 +36,17 @@ export class ContactPage {
 		 // If it's base64:
 		 this.base64Image = 'data:image/jpeg;base64,' + imageData;
 		}, (err) => {
-		 // Handle error
+		 this.base64Image = '../assets/imgs/onix.png';
 		});
 	}
 
 	analisePicture(imageData){
+		//debugger;
 		const scanOptions: OpenALPROptions = {
 		   country: this.openALPR.Country.EU,
 		   amount: 3
 		}
+
 // To get imageData, you can use the @ionic-native/camera module for example. It works with DestinationType.FILE_URI and DATA_URL
 		this.openALPR.scan(imageData, scanOptions)
 		.then((res: [OpenALPRResult]) => {
