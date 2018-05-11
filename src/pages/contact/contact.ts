@@ -10,7 +10,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 export class ContactPage {
 
  public base64Image: string;
-
+ 
   constructor(public global: GlobalProvider, public navCtrl: NavController, private camera: Camera) {
 
   }
