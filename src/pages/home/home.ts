@@ -2,12 +2,17 @@ import { Component } from '@angular/core';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import { NavController } from 'ionic-angular';
 import { GlobalProvider } from "../../providers/global/global";
+//import * as crypto from '../../../node_modules/crypto';
+//import crypto from 'crypto';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+
+  public dadoscarro = '';
+
 
   constructor(public global: GlobalProvider, public navCtrl: NavController, public http: Http) {
 
@@ -30,6 +35,7 @@ export class HomePage {
 	consultaPlacaSinespHTTP = function(placa)    {
 	
     //$scope.retorno = "consultaPlacaSinespHTTP";
+    var require: any;
     
     const crypto = require('crypto')
 
@@ -74,17 +80,24 @@ export class HomePage {
         </v:Body>\
       </v:Envelope>';
 
-      const headers = {
-        "Content-type": "text/xml",
-        "Accept": "text/xml",
-        "Content-length": xml.length
-      }
+      //const headers = { headers :
+      //                      {
+      //                      "Content-type": "text/xml",
+      //                      "Accept": "text/xml",
+      //                      "Content-length": xml.length
+      //                      }
+      //                }
+    let headers = new Headers({ "Content-type": "text/xml",
+                            "Accept": "text/xml",
+                            "Content-length": xml.length });
+    let options = new RequestOptions({ headers: headers });
+
     //$scope.retorno = "consultaPlacaSinespHTTPINICIO";
 
-    this.http.post("https://cidadao.sinesp.gov.br/sinesp-cidadao/mobile/consultar-placa/v3", xml, headers)
+    this.http.post("https://cidadao.sinesp.gov.br/sinesp-cidadao/mobile/consultar-placa/v3", xml, options)
       .subscribe(data => {
-      	dadoscarro = JSON.stringify(data['_body']);
-        console.log(dadoscarro);
+      	this.dadoscarro = JSON.stringify(data['_body']);
+        console.log(this.dadoscarro);
        }, error => {
         console.log(error);// Error getting the data
       });
@@ -94,16 +107,18 @@ export class HomePage {
 consultarPlacaCC(placa) {
     //var headers = new Headers();
     
-    const headers = {
-        "Content-type": "text/xml",
-        "Accept": "text/xml"
-      }
-    //headers.append("Accept", 'text/xml');
-    //headers.append('Content-Type', 'text/xml' );
+    //const headers = {
+    //    "Content-type": "text/xml",
+    //    "Accept": "text/xml"
+    //  }
+    //const headers = { headers : {"Content-type": "text/xml",
+    //                        "Accept": "text/xml"}}
 
-    //let options = new RequestOptions({ headers: headers });
+    let headers = new Headers({ 'Content-Type': 'text/xml' });
+    let options = new RequestOptions({ headers: headers });
+
  
-    this.http.post("http://casarochadois.servehttp.com/fipe/consultasinesp.php?placa="+placa, "E", headers)
+    this.http.post("http://casarochadois.servehttp.com/fipe/consultasinesp.php?placa="+placa, 'E', options)
       .subscribe(data => {
       	//dadoscarro = JSON.stringify(data['_body']);
         //console.log(dadoscarro);

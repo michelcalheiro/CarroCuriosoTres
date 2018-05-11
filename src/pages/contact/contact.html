@@ -1,17 +1,13 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      Reportar Bugs
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+  <button ion-button block myitem (click)='takePicture();'>Camera</button>
+  <ion-label fixed>{{global.saida}}</ion-label>
+  <img [src]="base64Image" *ngIf="base64Image" />
 </ion-content>
