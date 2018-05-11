@@ -11,7 +11,7 @@ export class GlobalProvider {
 
 
 	public myGlobalVar: string;
-	public saida: string;
+	public saida: any;
 
   constructor() {
     
