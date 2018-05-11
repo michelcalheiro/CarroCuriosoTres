@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule} from '@angular/http';
 import { GlobalProvider } from '../providers/global/global';
 import { Camera } from '@ionic-native/camera';
+import { OpenALPR, OpenALPROptions, OpenALPRResult } from '@ionic-native/openalpr';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { Camera } from '@ionic-native/camera';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GlobalProvider,
-    Camera
+    Camera,
+    OpenALPR
   ]
 })
 export class AppModule {}

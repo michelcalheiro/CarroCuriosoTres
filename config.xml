@@ -84,4 +84,5 @@
     <engine name="android" spec="~7.0.0" />
     <plugin name="cordova-plugin-advanced-http" spec="^1.11.1" />
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
+    <plugin name="cordova-plugin-openalpr" spec="^2.0.1" />
 </widget>
