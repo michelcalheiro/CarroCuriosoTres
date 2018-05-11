@@ -51,11 +51,11 @@ export class ContactPage {
 		this.openALPR.scan(imageData, scanOptions)
 		.then((res: [OpenALPRResult]) => {
 			//console.log(res);
-			this.global.saida = res.toString();
+			this.global.saida = "OK" +  res.toString();
 		})
 		.catch((error: Error) => {
 			//console.error(error);
-			this.global.saida = error.toString();	
+			this.global.saida = "E" + error.toString();	
 		});
 	}
 
