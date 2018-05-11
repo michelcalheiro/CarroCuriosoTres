@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule} from '@angular/http';
 import { GlobalProvider } from '../providers/global/global';
+import { Camera } from '@ionic-native/camera';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { GlobalProvider } from '../providers/global/global';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GlobalProvider
+    GlobalProvider,
+    Camera
   ]
 })
 export class AppModule {}
